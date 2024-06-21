@@ -1,39 +1,9 @@
 README.md
 
 This program works as an Interpreter for BASIC. BASIC is a well-known programming language that was used a lot decades ago.
-The interpreter handles multiple statements from the BASIC program. The table below shows different statements and symbols
-that this program can handle. 
+The interpreter handles multiple statements from the BASIC program. 
 
-LET *var* *int*  | Change the value of variable *var* to the integer *int*
---------------------------------------------------------------------------------------------------------
-PRINT *var*      | Print the value of variable *var* to output
---------------------------------------------------------------------------------------------------------
-PRINTALL         | Prints the value of all used variables to output, one per line.
---------------------------------------------------------------------------------------------------------
-ADD *var* *p*    | Adds *p* to the value of the variable *var*, where *p* is an int or variable.
---------------------------------------------------------------------------------------------------------
-SUB *var* *p*    | Subtracts *p* from  the value of the variable *var*, where *p* is an int or variable.
---------------------------------------------------------------------------------------------------------
-MULT *var* *p*   | Multiplies the value of the variable *var* by the integer or variable *p*
---------------------------------------------------------------------------------------------------------
-DIV *var* *p*    | Divides the value of the variable *var* by the integer or variable *p*
---------------------------------------------------------------------------------------------------------
-GOTO *linenum*   | Jumps execution of the program to the line numbered *linenum*
---------------------------------------------------------------------------------------------------------
-IF *var* *op*    | Compares the value of the variable *var* to the integer *int*
-*int* THEN       | via the operator *op* (<, <=, >, >=, =, <>), and jumps
-*linenum*        | execution of the program to line *linenum* if true.
---------------------------------------------------------------------------------------------------------
-GOSUB *linenum*  | Temporarily jumps to line *linenum*, and jumps back after a RETURN
---------------------------------------------------------------------------------------------------------
-RETURN           | Jumps execution of the program back to the most recently executed GOSUB.
---------------------------------------------------------------------------------------------------------
-END              | Immediately terminates the program.
---------------------------------------------------------------------------------------------------------
-.                | Placed at the end of the program, and behaves like an END statement.
-
-The interpretProgram function will read in a valid program from an input stream, interpret that program, and output everything 
-to an output stream in Interpreter.cpp. 
+The interpretProgram function will read in a valid program from an input stream, interpret that program, and output everything to an output stream in Interpreter.cpp. 
 
 Below are the statement files I used and their functions:
 
@@ -60,4 +30,23 @@ GoSubStatement.h: Used to temporarily jump to a line for the GOSUB statement as 
 EndStatement.h: Used for the Endstatement to terminate or end the program.
 
 arithmetic.h: Used for all the arithmetic statements like Addition, Substraction, Multiplication and Division.
+
+Here's an example program: 
+LET X 10            // Set variable X to 10
+LET Y 20            // Set variable Y to 20
+ADD X Y             // Add Y to X (X becomes 30)
+IF X = 30 THEN 8    // If X equals 30, jump to line 8
+SUB Y X             // Subtract X from Y (not executed if jump happens)
+MULT X 2            // Multiply X by 2 (X becomes 60 if jump happens)
+GOTO 10             // Jump to line 10
+PRINT X             // Print X (prints 60)
+PRINT Y             // Print Y (prints 20 as no change after initialization)
+GOSUB 13            // Jump to subroutine at line 13
+LET Z 5             // Sets variable Z to 5 (part of subroutine)
+ADD Z X             // Add X to Z (Z becomes 65)
+RETURN              // Return from subroutine
+PRINTALL            // Prints all variables: X, Y, Z
+END                 // End of the program
+.                   // Acts as an END statement
+
 
