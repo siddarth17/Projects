@@ -1,9 +1,7 @@
 README.md
 
-This program works as an Interpreter for BASIC. BASIC is a well-known programming language that was used a lot decades ago.
+This program works as an Interpreter for BASIC, a well-known programming languagedecades ago.
 The interpreter handles multiple statements from the BASIC program. 
-
-The interpretProgram function will read in a valid program from an input stream, interpret that program, and output everything to an output stream in Interpreter.cpp. 
 
 Below are the statement files I used and their functions:
 
